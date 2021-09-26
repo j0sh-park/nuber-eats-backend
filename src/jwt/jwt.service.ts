@@ -8,7 +8,6 @@ export class JwtService {
 
   constructor(private readonly configService: ConfigService) {
     this.privateKey = configService.get('PRIVATE_KEY')
-    console.log(this.privateKey)
   }
 
   sign(userId: number): string {

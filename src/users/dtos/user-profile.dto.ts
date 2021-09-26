@@ -10,6 +10,14 @@ export class UserProfileInput {
 
 @ObjectType()
 export class UserProfileOutput extends CoreOutput {
+  static succeed(user?: User): UserProfileOutput {
+    if (!user) throw Error('User is undefined')
+    const output = new this()
+    output.ok = true
+    output.user = user
+    return output
+  }
+
   @Field(() => User, { nullable: true })
   user?: User
 }
